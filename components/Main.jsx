@@ -19,6 +19,7 @@ function Main() {
     axios.get(link).then((resp) => {
       const answer = resp.data;
       console.log(answer);
+      //visualizzo tutto l'array
 
       setFemaleActors(answer);
     });
@@ -26,10 +27,32 @@ function Main() {
 
   useEffect(fetchData, []);
 
+  // MILESTONE 2 Prepariamo una card per ciascun attore/attrice, mostrandone le seguenti informazioni nome
+  /*nome
+anno nascita 1
+nazionalità 2
+biografia 3
+immagine 4
+riconoscimenti 5
+immagine*/ 6;
+
   return (
-    <div>
-      <h1>ok eccoci</h1>
-    </div>
+    <>
+      (
+      <div className="card col-5">
+        <img src="..." className="card-img-top" alt="..." />
+        <div className="card-body">
+          <h5 className="card-title">nome</h5>
+        </div>
+        <ul className="list-group list-group-flush">
+          <li className="list-group-item">anno nascita</li>
+          <li className="list-group-item">nazionalità</li>
+          <li className="list-group-item">biografia</li>
+          <li className="list-group-item">riconoscimenti</li>
+        </ul>
+      </div>
+      )
+    </>
   );
 }
 
