@@ -48,19 +48,24 @@ immagine*/ 6;
           death_year,
           image,
           nationality,
+          awards,
         } = actress;
+        //col destructure posso accedere facilmente a tutto ciò che mi serve dall'array femaleActors
 
+        // Mostriamo in pagina una card per ciascun attore, con grafica a piacimento!
         return (
           <div key={id} className="card col-5">
-            <img src="..." className="card-img-top" alt="..." />
+            <img src={image} className="card-img-top" alt="..." />
             <div className="card-body">
-              <h5 className="card-title">nome</h5>
+              <h5 className="card-title">{name}</h5>
             </div>
             <ul className="list-group list-group-flush">
-              <li className="list-group-item">anno nascita</li>
-              <li className="list-group-item">nazionalità</li>
-              <li className="list-group-item">biografia</li>
-              <li className="list-group-item">riconoscimenti</li>
+              <li className="list-group-item">{biography}</li>
+              <li className="list-group-item">
+                {birth_year} {death_year}
+              </li>
+              <li className="list-group-item">{biography}</li>
+              <li className="list-group-item">{awards}</li>
             </ul>
           </div>
         );
