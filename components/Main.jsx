@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
+import CardActress from "./CardActress";
+import CardActor from "./CardActor";
 //importo axios e useState e useEffect
 
 /* MILESTONE 1
@@ -11,12 +13,14 @@ import { useEffect } from "react";
 function Main() {
   // creo la variabile globale per visulaizzare il contenuto della chiamata API
   const [femaleActors, setFemaleActors] = useState([]);
+  // creo un altra variabile per l'array degli attori
+  const [maleActors, setmaleActors] = useState([]);
 
-  const link = "https://lanciweb.github.io/demo/api/actresses/";
+  const linkActress = "https://lanciweb.github.io/demo/api/actresses/";
 
   //preparo la funzione
-  const fetchData = () => {
-    axios.get(link).then((resp) => {
+  const fetchDataActress = () => {
+    axios.get(linkActress).then((resp) => {
       const answer = resp.data;
       console.log(answer);
       //visualizzo tutto l'array
@@ -25,52 +29,49 @@ function Main() {
     });
   };
 
-  useEffect(fetchData, []);
+  const linkActor = "https://lanciweb.github.io/demo/api/actors/";
+
+  //preparo la funzione
+  const fetchDataActor = () => {
+    axios.get(linkActor).then((resp) => {
+      const answerMale = resp.data;
+      console.log(answerMale);
+      //visualizzo tutto l'array
+
+      setmaleActors(answerMale);
+    });
+  };
+
+  useEffect(fetchDataActress, []);
+  useEffect(fetchDataActor, []);
 
   // MILESTONE 2 Prepariamo una card per ciascun attore/attrice, mostrandone le seguenti informazioni nome
-  /*nome
-anno nascita 1
-nazionalità 2
-biografia 3
-immagine 4
-riconoscimenti 5
-immagine*/ 6;
 
+  // per il bonus ho preferito creare due Card una per gli attori e una per le attrici
   return (
     <>
-      (
-      {femaleActors.map((actress) => {
-        const {
-          id,
-          name,
-          biography,
-          birth_year,
-          death_year,
-          image,
-          nationality,
-          awards,
-        } = actress;
-        //col destructure posso accedere facilmente a tutto ciò che mi serve dall'array femaleActors
-
-        // Mostriamo in pagina una card per ciascun attore, con grafica a piacimento!
-        return (
-          <div key={id} className="card col-5">
-            <img src={image} className="card-img-top" alt="..." />
-            <div className="card-body">
-              <h5 className="card-title">{name}</h5>
-            </div>
-            <ul className="list-group list-group-flush">
-              <li className="list-group-item">{biography}</li>
-              <li className="list-group-item">
-                {birth_year} {death_year}
-              </li>
-              <li className="list-group-item">{biography}</li>
-              <li className="list-group-item">{awards}</li>
-            </ul>
+      <div className="container">
+        <div className="text-center my-5">
+          <h2 className="mb-4 text-danger border-bottom border-danger pb-2">
+            🌹 Attrici
+          </h2>
+        </div>
+        <div className="row d-flex">
+          {femaleActors.map((actress) => {
+            return <CardActress actress={actress} />;
+          })}
+        </div>
+        <div className="row d-flex">
+          <div className="text-center my-5">
+            <h2 className="mt-5 mb-4 text-primary border-bottom border-primary pb-2">
+              🎭 Attori
+            </h2>
           </div>
-        );
-      })}
-      )
+          {maleActors.map((actor) => {
+            return <CardActor actor={actor} />;
+          })}
+        </div>
+      </div>
     </>
   );
 }

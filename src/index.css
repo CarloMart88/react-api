@@ -1,0 +1,11 @@
+
+.card-actress {
+  background-color: #f8bbd0;   /* rosa antico */
+  border-left: 6px solid #880e4f; /* bordeaux */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+.card-actor {
+  background-color: #0d47a1;   
+  border-left: 6px solid #90caf9 ; }
