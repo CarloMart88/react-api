@@ -39,18 +39,32 @@ immagine*/ 6;
   return (
     <>
       (
-      <div className="card col-5">
-        <img src="..." className="card-img-top" alt="..." />
-        <div className="card-body">
-          <h5 className="card-title">nome</h5>
-        </div>
-        <ul className="list-group list-group-flush">
-          <li className="list-group-item">anno nascita</li>
-          <li className="list-group-item">nazionalità</li>
-          <li className="list-group-item">biografia</li>
-          <li className="list-group-item">riconoscimenti</li>
-        </ul>
-      </div>
+      {femaleActors.map((actress) => {
+        const {
+          id,
+          name,
+          biography,
+          birth_year,
+          death_year,
+          image,
+          nationality,
+        } = actress;
+
+        return (
+          <div key={id} className="card col-5">
+            <img src="..." className="card-img-top" alt="..." />
+            <div className="card-body">
+              <h5 className="card-title">nome</h5>
+            </div>
+            <ul className="list-group list-group-flush">
+              <li className="list-group-item">anno nascita</li>
+              <li className="list-group-item">nazionalità</li>
+              <li className="list-group-item">biografia</li>
+              <li className="list-group-item">riconoscimenti</li>
+            </ul>
+          </div>
+        );
+      })}
       )
     </>
   );
