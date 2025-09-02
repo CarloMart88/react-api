@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
-//importo axios e useState
+import { useEffect } from "react";
+//importo axios e useState e useEffect
 
 /* MILESTONE 1
  Al caricamento dell'applicazione, recuperiamo la lista degli attori e delle attrici dalle API e stampiamoli in console.
@@ -16,9 +17,15 @@ function Main() {
   //preparo la funzione
   const fetchData = () => {
     axios.get(link).then((resp) => {
-      setFemaleActors(resp.data);
+      const answer = resp.data;
+      console.log(answer);
+
+      setFemaleActors(answer);
     });
   };
+
+  useEffect(fetchData, []);
+
   return (
     <div>
       <h1>ok eccoci</h1>
