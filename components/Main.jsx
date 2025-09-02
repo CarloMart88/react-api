@@ -1,4 +1,7 @@
-import React from "react";
+import axios from "axios";
+//importo axios
+
+//Lista di Attrici: [https://lanciweb.github.io/demo/api/actresses/) scelgo di iniziare con la lista attrici
 
 function Main() {
   return (
